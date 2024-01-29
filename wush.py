@@ -36,6 +36,15 @@ class Wush(cmd.Cmd):
         self.priviledged = priviledged
         self.current_user = getpass.getuser()
 
+    def cmdloop(self, intro=None):
+        print(self.intro)
+        while True:
+            try:
+                super().cmdloop(intro='')
+                break
+            except KeyboardInterrupt:
+                print('^C')
+
     def do_authorized(self, args):
         '''\
         List of authorized hosts for the current user, or the usernames given
