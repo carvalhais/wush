@@ -1,0 +1,36 @@
+# Location of host system binaries, neeeded by some functionalities of the wush
+# command shell.
+[binaries]
+true    = '/usr/bin/true'
+su      = '/usr/bin/su'
+passwd  = '/usr/bin/passwd'
+
+# Authorized users followed by a list of which hosts they are authorized to 
+# perform wakeup operations.
+[users]
+username1   = ['hostname1', 'hostname2']
+username2   = ['hostname1',]
+username3   = ['hostname2', 'hostname3']
+
+# Host section, each host is a child entry on this section with the following 
+# parameters at least: 'mac_address', 'host_ip' and 'interface'; 'mac_address' 
+# and 'host_ip' are addresses of the host that will be woken up; 'interface' 
+# is the IP address of the shell servers interface which is attached to the 
+# same network segment as the target host (this is required because of the way
+# wake-up on lan works).
+[hosts]
+
+[hosts.hostname1]
+mac_address = 'FF:FF:FF:FF:FF:01'
+host_ip     = '127.0.1.1'
+interface   = '127.0.0.1'
+
+[hosts.hostname2]
+mac_address = 'FF:FF:FF:FF:FF:02'
+host_ip     = '127.0.1.2'
+interface   = '127.0.0.1'
+
+[hosts.hostname3]
+mac_address = 'FF:FF:FF:FF:FF:03'
+host_ip     = '127.0.2.3'
+interface   = '127.0.0.2'
